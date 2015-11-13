@@ -8,7 +8,7 @@ object BootApplication extends App {
   // Turn off spark's default logger
   Logger.getLogger("org").setLevel(Level.OFF)
 
-  val wordCount = new WordCount(CoreSystem).get()
-  println("Word Count is ::: ")
+  val wordCount = new WordCount(CoreSystem).get("src/main/resources/file.txt")
+  println("Word Count is : ")
   wordCount.show()
 }
