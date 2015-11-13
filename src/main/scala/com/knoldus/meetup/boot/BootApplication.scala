@@ -10,7 +10,7 @@ object BootApplication extends App {
   Logger.getLogger("org").setLevel(Level.OFF)
 
   val wordCount = new WordCount(CoreSystem).get("src/main/resources/file.txt")
-  println("Word Count is : ")
+
   wordCount.show()
 
 }
