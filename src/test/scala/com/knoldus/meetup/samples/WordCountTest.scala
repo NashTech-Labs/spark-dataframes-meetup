@@ -9,6 +9,7 @@ class WordCountTest extends FunSuite {
 
   test("get word count") {
     val result = sample.get("src/test/resources/file.txt")
+
     assert(result.columns.length === 2)
   }
 

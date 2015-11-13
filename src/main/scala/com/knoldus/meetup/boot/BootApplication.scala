@@ -5,10 +5,12 @@ import com.knoldus.meetup.samples.WordCount
 import org.apache.log4j.{Level, Logger}
 
 object BootApplication extends App {
+
   // Turn off spark's default logger
   Logger.getLogger("org").setLevel(Level.OFF)
 
   val wordCount = new WordCount(CoreSystem).get("src/main/resources/file.txt")
   println("Word Count is : ")
   wordCount.show()
+
 }
