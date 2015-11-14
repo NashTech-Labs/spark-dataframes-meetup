@@ -18,7 +18,6 @@ object DataFrameSamples extends App {
   val wordCountSorter = new WordCountSorter(wordCount)
 
   wordCountSorter.sort(URL).show()
-
   wordCountSorter.sort(URL, false).show()
 
   val averager = new WordCountAverager(wordCount)

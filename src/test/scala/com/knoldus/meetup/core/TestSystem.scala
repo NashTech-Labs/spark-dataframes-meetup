@@ -19,5 +19,6 @@ object TestData {
   val URL = "src/test/resources/file.txt"
   val TAKE = 20
   val DATA_FRAME = sqlContext.sparkContext.textFile(URL).toDF("line").explode("line", "word")((line: String) => line.split(" ")).groupBy("word").count()
+  val RDD = sc.textFile(URL).flatMap(_.split(" ")).map((_, 1)).reduceByKey(_ + _)
 
 }
