@@ -1,8 +1,8 @@
 package com.knoldus.meetup.samples
 
+import com.knoldus.meetup.core.TestData.{TAKE, URL}
 import com.knoldus.meetup.core.TestSystem
 import org.scalatest.FunSuite
-import com.knoldus.meetup.core.TestData.URL
 
 class WordCountTest extends FunSuite {
 
@@ -12,6 +12,12 @@ class WordCountTest extends FunSuite {
     val result = sample.get(URL)
 
     assert(result.columns.length === 2)
+  }
+
+  test("get word count rdd") {
+    val result = sample.getRDD(URL)
+
+    assert(result.take(TAKE).length === 20)
   }
 
 }

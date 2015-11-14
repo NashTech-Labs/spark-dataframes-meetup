@@ -4,7 +4,7 @@ import com.knoldus.meetup.core.CoreSystem
 import com.knoldus.meetup.samples.{WordCountAverager, WordCountSorter, WordCount}
 import org.apache.log4j.{Level, Logger}
 
-object BootApplication extends App {
+object DataFrameSamples extends App {
 
   // Turn off spark's default logger
   Logger.getLogger("org").setLevel(Level.OFF)
