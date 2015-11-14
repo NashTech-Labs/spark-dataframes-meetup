@@ -1,7 +1,7 @@
 package com.knoldus.meetup.boot
 
 import com.knoldus.meetup.core.CoreSystem
-import com.knoldus.meetup.samples.{WordCountSorter, WordCount}
+import com.knoldus.meetup.samples.{WordCountAverager, WordCountSorter, WordCount}
 import org.apache.log4j.{Logger, Level}
 
 object RDDSamples extends App {
@@ -23,9 +23,12 @@ object RDDSamples extends App {
   println("Word Count in Ascending order : ")
   wordCountSorter.sortRDD(URL).take(TAKE).map{case (word, count) => println(s"Word: $word, Count: $count")}
   println()
-  println()
   println("Word Count in Descending order :")
   wordCountSorter.sortRDD(URL, false).take(TAKE).map{case (word, count) => println(s"Word: $word, Count: $count")}
   println()
+
+  val averager = new WordCountAverager(wordCount)
+
+  println(s"Word Count Average : ${averager.averageRDD(URL)}")
 
 }

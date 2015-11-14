@@ -1,6 +1,6 @@
 package com.knoldus.meetup.samples
 
-import com.knoldus.meetup.core.TestData.{DATA_FRAME, URL}
+import com.knoldus.meetup.core.TestData.{DATA_FRAME, RDD, URL}
 import org.mockito.Mockito.when
 import org.scalatest.FunSuite
 import org.scalatest.mock.MockitoSugar
@@ -16,6 +16,14 @@ class WordCountAveragerTest extends FunSuite with MockitoSugar {
     val result = averager.average(URL)
 
     assert(result !== 0)
+  }
+
+  test("average count of words using rdd") {
+    when(wordCount.getRDD(URL)).thenReturn(RDD)
+
+    val result = averager.averageRDD(URL)
+
+    assert(result !== 0D)
   }
 
 }
