@@ -18,4 +18,12 @@ class WordCountSorterTest extends FunSuite with MockitoSugar {
     assert(result.columns.length === DATA_FRAME.columns.length)
   }
 
+  test("sort in descending order") {
+    when(wordCount.get(URL)).thenReturn(DATA_FRAME)
+
+    val result = sorter.sort(URL, false)
+
+    assert(result.columns.length === DATA_FRAME.columns.length)
+  }
+
 }

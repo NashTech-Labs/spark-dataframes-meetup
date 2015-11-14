@@ -1,7 +1,7 @@
 package com.knoldus.meetup.boot
 
 import com.knoldus.meetup.core.CoreSystem
-import com.knoldus.meetup.samples.{WordCountSorter, WordCount}
+import com.knoldus.meetup.samples.{WordCountAverager, WordCountSorter, WordCount}
 import org.apache.log4j.{Level, Logger}
 
 object BootApplication extends App {
@@ -20,5 +20,9 @@ object BootApplication extends App {
   wordCountSorter.sort(URL).show()
 
   wordCountSorter.sort(URL, false).show()
+
+  val averager = new WordCountAverager(wordCount)
+
+  averager.average(URL).show()
 
 }
