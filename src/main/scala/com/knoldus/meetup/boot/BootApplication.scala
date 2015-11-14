@@ -1,7 +1,7 @@
 package com.knoldus.meetup.boot
 
 import com.knoldus.meetup.core.CoreSystem
-import com.knoldus.meetup.samples.WordCount
+import com.knoldus.meetup.samples.{WordCountSorter, WordCount}
 import org.apache.log4j.{Level, Logger}
 
 object BootApplication extends App {
@@ -9,8 +9,16 @@ object BootApplication extends App {
   // Turn off spark's default logger
   Logger.getLogger("org").setLevel(Level.OFF)
 
-  val wordCount = new WordCount(CoreSystem).get("src/main/resources/file.txt")
+  private val URL = "src/main/resources/file.txt"
 
-  wordCount.show()
+  val wordCount = new WordCount(CoreSystem)
+
+  wordCount.get(URL).show()
+
+  val wordCountSorter = new WordCountSorter(wordCount)
+
+  wordCountSorter.sort(URL).show()
+
+  wordCountSorter.sort(URL, false).show()
 
 }

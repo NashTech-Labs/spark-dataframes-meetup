@@ -10,3 +10,13 @@ object TestSystem extends CoreSystemApi {
   override val sqlContext = new SQLContext(sc)
 
 }
+
+object TestData {
+
+  import TestSystem._
+  import sqlContext.implicits._
+
+  val URL = "src/test/resources/file.txt"
+  val DATA_FRAME = sqlContext.sparkContext.textFile(URL).toDF("line").explode("line", "word")((line: String) => line.split(" ")).groupBy("word").count()
+
+}
